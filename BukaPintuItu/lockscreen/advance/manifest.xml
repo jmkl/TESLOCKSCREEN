@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright © 2014 jmkl <dcsms@live.com>
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the http://www.wtfpl.net/ file for more details.
+-->
+<Lockscreen version="1" displayDesktop="true" frameRate="30" screenWidth="720">
+
+<VirtualScreen name="vs">
+	<Wallpaper />
+</VirtualScreen>
+
+<Var name="move" expression="#ul.move_x" />
+<Var name="xa" expression="(#ul.move_x/720)*10"/>
+<Var name="xb" expression="(sinh(#xa))/720"/>
+
+<Image src="vs" useVirtualScreen="true" angleY="-(#xb*90)" x="0" y="0" centerX="#screen_width" centerY="#screen_height/2"/>
+<Unlocker name="ul" bounceInitSpeed="1000" bounceAcceleration="2000" alwaysShow="true">
+<StartPoint x="0" y="0" w="200" h="#screen_height"/>
+<EndPoint x="#screen_width-200" y="0" w="200" h="#screen_height"/>
+</Unlocker>
+
+
+	
+
+</Lockscreen>
