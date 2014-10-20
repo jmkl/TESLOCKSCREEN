@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Lockscreen version="1" displayDesktop="true" frameRate="30" screenWidth="720">
+	<VirtualScreen name="vs">
+		<Wallpaper />
+	</VirtualScreen>
+	<Image useVirtualScreen="true" src="vs" x="0" y="0"/>
+			<Image x="328" y="1169" w="63" h="43" align="left" alignV="top" src="hendel.png" >
+				<PositionAnimation delay="500" >
+					<Position x="0" y="50" time="0"/>
+				<Position x="0" y="0" time="1000" speed="20"/>
+				</PositionAnimation>
+				<AlphaAnimation delay="500">
+				<Alpha a="0" time="0"/>
+				<Alpha a="255" time="1000" speed="20"/>
+				</AlphaAnimation>
+	</Image>
+	
+	<Unlocker name="0" bounceInitSpeed="1200" bounceAcceleration="2000" alwaysShow="true">
+		<StartPoint x="328" y="1169" w="100" h="100"/>
+		<EndPoint x="328" y="1169-500" w="100" h="100">
+		<Path>
+		<Position x="0" y="0"/>
+		<Position x="0" y="-500"/>
+		</Path>
+		</EndPoint>
+	</Unlocker>
+</Lockscreen>

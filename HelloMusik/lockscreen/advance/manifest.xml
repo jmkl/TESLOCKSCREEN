@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright © 2014 jmkl <dcsms@live.com>
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the http://www.wtfpl.net/ file for more details.
+-->
+<Lockscreen version="1" frameRate="30" displayDesktop="true" screenWidth="720">
+	<Var name="w" expression="#screen_width" const="true" />
+	<Var name="h" expression="#screen_height" const="true" />
+	<VirtualScreen name="vs">
+		<Wallpaper />
+	</VirtualScreen>
+	<Image useVirtualScreen="true" src="vs" x="0" y="0+#u.move_y" />
+	<Image align="center" x="#w/2" y="(#h-100)+#u.move_y" src="slide_to_unloack.png" />
+	<Var name="jarak" expression="sinh((#u.move_y/#h)*10)"/>
+	
+	<MusicControl name="music_control" x="0" pivotX="#w/2" pivotY="0" angleX="ifelse(ge(#jarak,-90),#jarak,-90)" visibility="true">
+		<Image src="musik_bg.png" x="#w/2" y="150" align="center" />
+		<Image name="music_album_cover" x="#w/2" y="150+82" align="center" w="346" h="346">
+			<Mask src="musik_mask.png" x="0" y="0" />
+		</Image>
+		<Text color="#ffffffff" text="@jarak" y="700" align="center" x="#w/2"/>
+		<Text name="music_display" color="#ffffffff" y="700" align="center" x="#w/2" />
+		<Image name="top" src="musik_top.png" x="#w/2" y="150+82" align="center" />
+
+			<Button name="music_prev" align="center" x="#w/2-200" y="750" w="87" h="121">
+				<Normal>
+					<Image src="prev.png" align="center" x="#w/2-200" y="750" />
+				</Normal>
+				<Pressed>
+					<Image src="prev_press.png" align="center" x="#w/2-200" y="750" />
+				</Pressed>
+			</Button>
+			<Button name="music_next" align="center" x="#w/2+200" y="750" w="87" h="121">
+				<Normal>
+					<Image src="next.png" align="center" x="#w/2+200" y="750" />
+				</Normal>
+				<Pressed>
+					<Image src="next_press.png" align="center" x="#w/2+200" y="750" />
+				</Pressed>
+			</Button>
+			<Button name="music_play" align="center" x="#w/2" y="750" w="87" h="121">
+				<Normal>
+					<Image src="play.png" align="center" x="#w/2" y="750" />
+				</Normal>
+				<Pressed>
+					<Image src="play_press.png" align="center" x="#w/2" y="750" />
+				</Pressed>
+			</Button>
+			<Button name="music_pause" align="center" x="#w/2" y="750" w="87" h="121">
+				<Normal>
+					<Image src="stop.png" align="center" x="#w/2" y="750" />
+				</Normal>
+				<Pressed>
+					<Image src="stop_press.png" align="center" x="#w/2" y="750" />
+				</Pressed>
+			</Button>
+
+	</MusicControl>
+	<Unlocker name="u" alwaysShow="true" bounceInitSpeed="1000" bounceAcceleration="2000">
+		<StartPoint x="0" y="#h-100" w="#w" h="100" >
+		<ReachedState>
+		<Trigger>
+		
+		</Trigger>
+		</ReachedState>
+		</StartPoint>
+		<EndPoint x="0" y="0" w="#w" h="#h/2">
+			<Path>
+				<Position x="0" y="#h-100" />
+				<Position x="0" y="0" />
+			</Path>
+		</EndPoint>
+	</Unlocker>
+</Lockscreen>
